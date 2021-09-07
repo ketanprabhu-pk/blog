@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- CSS only -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/fav/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/fav/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/fav/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('images/fav/site.webmanifest') }}">
 </head>
 
 <body class="bg-gray-300">
@@ -18,15 +22,22 @@
         <nav class="p-5 px-28 bg-gray-800 text-white flex justify-between mb-4">
             <ul class="flex mx-9 item-center">
                 <li><a href="{{ route('home') }}" class="p-3">Home</a></li>
-                <li><a href="http://" class="p-3">Dashboard</a></li>
+                <li><a href="{{ route('dashboard') }}" class="p-3">Dashboard</a></li>
                 <li><a href="http://" class="p-3">Post</a></li>
                 <li><a href="http://" class="p-3"></a></li>
             </ul>
             <ul class="flex mx-9 item-center">
-                <li><a href="{{ route('profile') }}" class="p-3">Ketan Prabhu</a></li>
-                <li><a href="{{ route('login') }}" class="p-3">Login</a></li>
-                <li><a href="{{ route('register') }}" class="p-3">Register</a></li>
-                <li><a href="{{ route('logout') }}" class="p-3">Logout</a></li>
+                @auth
+                    <li><a href="{{ route('profile') }}" class="p-3">Ketan Prabhu</a></li>
+                    <form action="{{ route('logout') }}" method="post" class="inline">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                @endauth
+                @guest
+                    <li><a href="{{ route('login') }}" class="p-3">Login</a></li>
+                    <li><a href="{{ route('register') }}" class="p-3">Register</a></li>
+                @endguest
             </ul>
         </nav>
         <div class="container">

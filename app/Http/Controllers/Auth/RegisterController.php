@@ -9,17 +9,15 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['guest']);
+    }
+
     public function index()
     {
-        return view('auth.index');
-    }
-    public function register()
-    {
         return view('auth.register');
-    }
-    public function login()
-    {
-        return view('auth.login');
     }
     public function store(Request $request)
     {
@@ -35,6 +33,10 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        auth()->attempt($request->only('email', 'password'));
+
+        return redirect()->route('dashboard');
     }
     public function logout()
     {

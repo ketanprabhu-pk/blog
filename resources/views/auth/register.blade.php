@@ -59,7 +59,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="password_confirmation" class="sr-only">Confirm password</label>
-                        <input type="password" name="cpassword_confirmation" id="password_confirmation"
+                        <input type="password" name="password_confirmation" id="password_confirmation"
                             placeholder="Confirm Password"
                             class="border-2 w-full p-4 rounded-lg @error('password_confirmation')
                                 border-red-500

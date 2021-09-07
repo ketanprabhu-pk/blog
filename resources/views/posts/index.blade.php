@@ -4,7 +4,7 @@
         <div class="row">
             <div class="container">
                 <div class="row">
-                    <div class="col">Index</div>
+                    <div class="col">Posts</div>
                 </div>
             </div>
         </div>

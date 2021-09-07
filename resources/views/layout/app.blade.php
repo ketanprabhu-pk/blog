@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Laravel Blog</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,18 +15,18 @@
 
 <body class="bg-gray-300">
     <main>
-        <nav class="p-5 px-28 bg-gray-800 text-white flex justify-between">
+        <nav class="p-5 px-28 bg-gray-800 text-white flex justify-between mb-4">
             <ul class="flex mx-9 item-center">
-                <li><a href="http://" class="p-3">Home</a></li>
+                <li><a href="{{ route('home') }}" class="p-3">Home</a></li>
                 <li><a href="http://" class="p-3">Dashboard</a></li>
                 <li><a href="http://" class="p-3">Post</a></li>
                 <li><a href="http://" class="p-3"></a></li>
             </ul>
             <ul class="flex mx-9 item-center">
-                <li><a href="http://" class="p-3">Ketan Prabhu</a></li>
-                <li><a href="http://" class="p-3">Login</a></li>
-                <li><a href="http://" class="p-3">Register</a></li>
-                <li><a href="http://" class="p-3">Logout</a></li>
+                <li><a href="{{ route('profile') }}" class="p-3">Ketan Prabhu</a></li>
+                <li><a href="{{ route('login') }}" class="p-3">Login</a></li>
+                <li><a href="{{ route('register') }}" class="p-3">Register</a></li>
+                <li><a href="{{ route('logout') }}" class="p-3">Logout</a></li>
             </ul>
         </nav>
         <div class="container">

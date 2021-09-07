@@ -36,6 +36,15 @@
                             </div>
                         @enderror
                     </div>
+                    <div class="mb-4">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2">
+                        <label for="remember" class="not-sr-only">Remember Me</label>
+                        @error('password')
+                            <div class="text-red-500 mt-2">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                     <div>
                         <button type="submit" class="bg-blue-600 text-white p-3 rounded font-medium w-full">
                             Login

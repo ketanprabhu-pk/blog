@@ -10,21 +10,11 @@ class ProfileController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['guest']);
+        $this->middleware(['auth']);
     }
 
     public function index()
     {
         return view('posts.index');
-    }
-    public function logout(Request $request)
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect()->route('dashboard');
     }
 }

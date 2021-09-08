@@ -13,7 +13,7 @@
                     <div class="mb-4">
                         <label for="body" class="sr-only"></label>
                         <textarea name="body" id="body" cols="20" rows="5"
-                            class="bg-gray-300 border-2 w-full p-4 rounded-lg"></textarea>
+                            class="bg-gray-200 border-2 w-full p-4 rounded-lg"></textarea>
                         @error('body')
                             <div class="text-red-500 mt-2">
                                 {{ $message }}
@@ -26,6 +26,21 @@
                         </button>
                     </div>
                 </form>
+            </div>
+            <div class="container m-4">
+                @if ($posts->count())
+                    @foreach ($posts as $post)
+                        <div class="content">
+                            <div class="mb-4">
+                                <a href="" class="font-bold">{{ $post->user->fname }} {{ $post->user->lname }}</a>
+                                <span class="text-gray-600">{{ $post->created_at->diffForHumans() }}</span>
+                                <p class="m-2">{{ $post->body }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    Sorry there are no postes
+                @endif
             </div>
         </div>
     </div>

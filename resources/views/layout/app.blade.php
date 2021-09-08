@@ -28,7 +28,8 @@
             </ul>
             <ul class="flex mx-9 item-center">
                 @auth
-                    <li><a href="{{ route('profile') }}" class="p-3">{{ auth()->user()->fname }}</a></li>
+                    <li><a href="{{ route('profile') }}" class="p-3">{{ auth()->user()->fname }}
+                            {{ auth()->user()->lname }}</a></li>
                     <form action="{{ route('logout') }}" method="post" class="inline">
                         @csrf
                         <button type="submit">Logout</button>

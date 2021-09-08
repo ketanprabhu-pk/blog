@@ -31,7 +31,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts');
-Route::post('/posts', [PostsController::class, 'index'])->name('posts');
+Route::post('/posts', [PostsController::class, 'store'])->name('posts');
 
 Route::get('/', function () {
     return view('posts.index');

@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    <div class="flex justify-center lg:m-10 lg:px-10 md:p-6">
+    <div class="flex justify-center lg:m-5 lg:px-5 md:m-5 md:px-5 md:p-6">
         <div class="lg:w-8/12 md:w-full bg-blue-100 p-6 rounded-lg">
             <div class="container">
                 <form action="{{ route('posts') }}" method="post">
@@ -37,7 +37,7 @@
                     </div>
                 </form>
             </div>
-            <div class="container m-4">
+            <div class="m-4">
                 @if ($posts->count())
                     @foreach ($posts as $post)
                         <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0 m-2">
@@ -60,8 +60,22 @@
                                     </div>
                                 </figcaption>
                                 <span class="text-gray-600">{{ $post->created_at->diffForHumans() }}</span>
+                                <div class="flex items-center">
+                                    <form action="" method="post" class="m-2">
+                                        @csrf
+                                        <button type="submit" class="text-blue-600">Like</button>
+                                    </form>
+                                    <form action="" method="post" class="m-2">
+                                        @csrf
+                                        <button type="submit" class="text-blue-600">UnLike</button>
+                                    </form>
+                                    <span>{{ $post->likes->count() }}
+                                        {{ Str::plural('like', $post->likes->count()) }}</span>
+                                </div>
                             </div>
+
                         </figure>
+
                     @endforeach
                     {{ $posts->links() }}
                 @else

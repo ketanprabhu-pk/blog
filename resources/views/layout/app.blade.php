@@ -41,7 +41,7 @@
                 @endguest
             </ul>
         </nav>
-        <div class="container">
+        <div class="m-2">
             @yield('content')
         </div>
     </main>

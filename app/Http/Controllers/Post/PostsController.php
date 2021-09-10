@@ -10,12 +10,13 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $data['posts'] = Posts::get();
+        $data['posts'] = Posts::latest()->paginate(10);
         return view('posts.index', $data);
     }
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'required',
             'body' => 'required',
         ]);
         // Posts::create([
@@ -23,7 +24,7 @@ class PostsController extends Controller
         //     'body' => $request->body,
         // ]);
 
-        $request->user()->posts()->create($request->only('body'));
+        $request->user()->posts()->create($request->only('title', 'body'));
         return back();
     }
 }

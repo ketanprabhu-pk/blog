@@ -10,7 +10,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $data['posts'] = Posts::latest()->paginate(10);
+        $data['posts'] = Posts::latest()->with(['user', 'likes'])->paginate(10);
         return view('posts.index', $data);
     }
     public function store(Request $request)
@@ -25,6 +25,11 @@ class PostsController extends Controller
         // ]);
 
         $request->user()->posts()->create($request->only('title', 'body'));
+        return back();
+    }
+    public function destroy(Posts $post, Request $request)
+    {
+        $post->delete();
         return back();
     }
 }

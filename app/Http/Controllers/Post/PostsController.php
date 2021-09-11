@@ -27,8 +27,9 @@ class PostsController extends Controller
         $request->user()->posts()->create($request->only('title', 'body'));
         return back();
     }
-    public function destroy(Posts $post, Request $request)
+    public function destroy(Posts $post)
     {
+        $this->authorize('delete', $post);
         $post->delete();
         return back();
     }

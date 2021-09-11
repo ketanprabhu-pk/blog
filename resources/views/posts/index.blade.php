@@ -80,7 +80,7 @@
                                             <span>{{ $post->likes->count() }}
                                                 {{ Str::plural('like', $post->likes->count()) }}</span>
                                         </div>
-                                        @if ($post->createdBy(auth()->user()))
+                                        @can('delete', $post)
                                             <div class="flex item-center">
                                                 <form action="{{ route('posts.destroy', $post) }}" method="post">
                                                     @csrf
@@ -97,7 +97,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        @endif
+                                        @endcan
                                     </div>
                                 @endauth
                             </div>

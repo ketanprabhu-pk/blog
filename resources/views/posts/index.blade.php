@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex justify-center lg:m-5 lg:px-5 md:m-5 md:px-5 md:p-6">
         <div class="lg:w-8/12 md:w-full bg-blue-100 p-6 rounded-lg">
-            <div class="container">
+            @auth
                 <form action="{{ route('posts') }}" method="post">
                     @if (session('status'))
                         <div class="mb-4 text-red-500 flex justify-center text-xl">
@@ -22,8 +22,8 @@
                     </div>
                     <div class="mb-4">
                         <label for="body" class="sr-only"></label>
-                        <textarea name="body" id="body" cols="20" rows="5"
-                            class="bg-gray-100 border-2 w-full p-4 rounded-lg" placeholder="Blog Content Body"></textarea>
+                        <textarea name="body" id="body" cols="20" rows="5" class="bg-gray-100 border-2 w-full p-4 rounded-lg"
+                            placeholder="Blog Content Body"></textarea>
                         @error('body')
                             <div class="text-red-500 mt-2">
                                 {{ $message }}
@@ -36,7 +36,7 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            @endauth
             <div class="m-4">
                 @if ($posts->count())
                     @foreach ($posts as $post)
